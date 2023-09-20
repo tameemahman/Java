@@ -30,6 +30,24 @@ public class Testwindow extends javax.swing.JFrame {
         return totalPrice;
     }
 
+    public float getDiscount() {
+        float totalPrice = getTotalPrice();
+        float discount = Float.parseFloat(txtdiscount.getText().trim());
+        float discountAmount = totalPrice * discount / 100;
+
+        float actualPrice = totalPrice - discountAmount;
+
+        return actualPrice;
+    }
+//    
+//    public float  getActualPrice(){
+//    float totalPrice=getTotalPrice();
+//    float discount= Float.parseFloat(txtdiscount.getText().trim());
+//    float actualPrice = totalPrice*discount/100;
+
+//    float actualPrice=totalPrice-discountamount;
+//    return actualPrice;
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,12 +131,13 @@ public class Testwindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CCSL");
+        jLabel1.setText("ORDER INVOICE SYSTEM");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 5, 1200, 90));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 100));
@@ -268,6 +287,23 @@ public class Testwindow extends javax.swing.JFrame {
         });
         jPanel11.add(txtquantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 400, -1));
         jPanel11.add(txttotalprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 400, -1));
+
+        txtdiscount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtdiscountFocusGained(evt);
+            }
+        });
+        txtdiscount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtdiscountKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtdiscountKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtdiscountKeyTyped(evt);
+            }
+        });
         jPanel11.add(txtdiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 400, -1));
         jPanel11.add(txtactualprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 400, -1));
         jPanel11.add(txtcashreceived, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 400, -1));
@@ -405,13 +441,9 @@ public class Testwindow extends javax.swing.JFrame {
         try {
             if (txtunitprice.getText().trim().isEmpty()) {
                 txtunitprice.requestFocus();
-            }
-            
-            else if (!txtquantity.getText().trim().isEmpty()) {
-                txttotalprice.setText(getTotalPrice()+"");
-            }
-            
-            else {
+            } else if (!txtquantity.getText().trim().isEmpty()) {
+                txttotalprice.setText(getTotalPrice() + "");
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Quantity can not be empty");
 //                txtquantity.requestFocus();
             }
@@ -421,6 +453,22 @@ public class Testwindow extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtquantityFocusLost
+
+    private void txtdiscountFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtdiscountFocusGained
+        txtdiscount.setText(0 + "");
+    }//GEN-LAST:event_txtdiscountFocusGained
+
+    private void txtdiscountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiscountKeyPressed
+        txtactualprice.setText(getDiscount() + "");
+    }//GEN-LAST:event_txtdiscountKeyPressed
+
+    private void txtdiscountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiscountKeyReleased
+        txtactualprice.setText(getDiscount() + "");
+    }//GEN-LAST:event_txtdiscountKeyReleased
+
+    private void txtdiscountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiscountKeyTyped
+        txtactualprice.setText(getDiscount() + "");
+    }//GEN-LAST:event_txtdiscountKeyTyped
 
     /**
      * @param args the command line arguments
