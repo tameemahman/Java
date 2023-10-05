@@ -466,8 +466,8 @@ public class DashBoard extends javax.swing.JFrame {
         btnReportView = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblReport = new javax.swing.JTable();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        reportdatefrom = new com.toedter.calendar.JDateChooser();
+        reportdateto = new com.toedter.calendar.JDateChooser();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -1182,6 +1182,11 @@ public class DashBoard extends javax.swing.JFrame {
                 btnProductSaveMouseClicked(evt);
             }
         });
+        btnProductSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductSaveActionPerformed(evt);
+            }
+        });
 
         btnProductUpdate.setText("Update");
         btnProductUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1189,11 +1194,21 @@ public class DashBoard extends javax.swing.JFrame {
                 btnProductUpdateMouseClicked(evt);
             }
         });
+        btnProductUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductUpdateActionPerformed(evt);
+            }
+        });
 
         btnProductDelete.setText("Delete");
         btnProductDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProductDeleteMouseClicked(evt);
+            }
+        });
+        btnProductDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductDeleteActionPerformed(evt);
             }
         });
 
@@ -1364,11 +1379,11 @@ public class DashBoard extends javax.swing.JFrame {
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(reportdatefrom, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(reportdateto, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(radioReportPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1394,10 +1409,10 @@ public class DashBoard extends javax.swing.JFrame {
                             .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(reportdatefrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(reportdateto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioReportPurchase)
@@ -1895,10 +1910,10 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (radioReportPurchase.isSelected()) {
-            getPurchaseReportByDate(dateReportFrom.getDate(), dateReportTo.getDate());
+            getPurchaseReportByDate(reportdatefrom.getDate(), reportdateto.getDate());
 
         } else if (radioReportSales.isSelected()) {
-            getSalesReportByDate(dateReportFrom.getDate(), dateReportTo.getDate());
+            getSalesReportByDate(reportdatefrom.getDate(), reportdateto.getDate());
 
         } else if (radioReportStock.isSelected()) {
             getStockReportByDate();
@@ -1932,6 +1947,18 @@ public class DashBoard extends javax.swing.JFrame {
         txtSalesActualPice.setText(null);
 
     }//GEN-LAST:event_btnSalesAddToCartMouseClicked
+
+    private void btnProductUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductUpdateActionPerformed
+
+    private void btnProductDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductDeleteActionPerformed
+
+    private void btnProductSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1994,8 +2021,6 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2071,6 +2096,8 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioReportSales;
     private javax.swing.JRadioButton radioReportStock;
     private javax.swing.JPanel report;
+    private com.toedter.calendar.JDateChooser reportdatefrom;
+    private com.toedter.calendar.JDateChooser reportdateto;
     private javax.swing.JPanel sales;
     private com.toedter.calendar.JDateChooser salesdate;
     private javax.swing.JTable tblCheckout;
